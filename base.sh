@@ -46,7 +46,7 @@ getIpv4Address() {
   curl -s https://api.ipify.org
 }
 
-getIpv4Address_Internal() {
+getIpv4Address_internal() {
    local_ip=$(ifconfig | grep '\<inet\>'| grep -v '127.0.0.1' | awk '{ print $2}' | awk 'NR==1')
    echo $local_ip
 }
