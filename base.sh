@@ -46,6 +46,11 @@ getIpv4Address() {
   curl -s https://api.ipify.org
 }
 
+getIpv4Address_Internal() {
+   local_ip=$(ifconfig | grep '\<inet\>'| grep -v '127.0.0.1' | awk '{ print $2}' | awk 'NR==1')
+   echo $local_ip
+}
+
 getIpv6Address() {
   # try and choose one that works on your machine
   curl -s -6 https://ifconfig.co/ip
